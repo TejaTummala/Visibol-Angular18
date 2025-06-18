@@ -27,9 +27,14 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "./node_modules/aos/dist/aos.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "./node_modules/aos/dist/aos.js",
+              "node_modules/gsap/dist/gsap.min.js",
+              "node_modules/gsap/dist/ScrollTrigger.min.js"
+            ],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
@@ -97,5 +102,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "ccd00c29-fe1d-4ffe-a012-eefadda8eeea"
   }
 }

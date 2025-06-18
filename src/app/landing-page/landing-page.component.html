@@ -1,0 +1,85 @@
+<!-- Main wrapper -->
+<div
+  class="min-h-screen w-full bg-gradient-to-b from-[#fdf3f3] via-[#fceef9] to-[#fef5f5] px-4 py-20 text-center font-rubik">
+
+  <!-- Title -->
+  <h1 class="text-4xl md:text-5xl font-bold text-black leading-snug">
+    Have an Idea? We Take You from Vision to Your
+    <span class="text-orange-500 underline underline-offset-4 decoration-wavy">First Customer</span>
+  </h1>
+  <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
+    Build your dream team with top-tier developers, designers, and engineers from our global talent pool. Flexible hiring. Transparent pricing.Scale your workforce on your terms — when and how you need it.
+  </p>
+
+  <h1 class="text-4xl md:text-5xl font-bold text-black leading-snug sub-textsize pt-4 md:pt-8 lg:pt-12">Backed by
+    Experts from the World’s Leading Companies</h1>
+
+  <!-- Scroll Cards Carousel -->
+  <div class="mt-20 w-full px-4 sm:px-6 lg:px-16 xl:px-24 relative pb-10">
+    <div class="relative h-[450px] flex items-center justify-center">
+      <div class="w-full max-w-6xl mx-auto h-full relative" (mouseenter)="isCarouselActive = true"
+        (mouseleave)="isCarouselActive = false">
+
+        <div *ngFor="let card of cards; let i = index"
+          class="absolute top-0 left-0 w-full h-full transition-opacity duration-500"
+          [style.opacity]="currentSlide === i ? '1' : '0'" [style.pointerEvents]="currentSlide === i ? 'auto' : 'none'">
+
+          <div class="flex w-full h-full items-center justify-between px-4 sm:px-6">
+            <!-- Card -->
+            <div class="relative w-full h-full flex flex-col lg:flex-row items-center justify-between p-8 gap-6 
+                      bg-white rounded-3xl z-10 shadow-[0_12px_32px_rgba(0,0,0,0.25)] 
+                      transition-all duration-500 ease-in-out overflow-hidden">
+
+              <!-- 🚩 Scrollbar-like Vertical Navigation -->
+              <!-- Custom Scrollbar Navigation with Even Padding -->
+              <div
+                class="absolute left-4 sm:left-6 lg:left-8 top-10 bottom-10 flex flex-col justify-between z-20 w-[14px]">
+                <!-- Orange Track -->
+                <div class="relative w-full h-full bg-[#FF7F50] rounded-full">
+                  <!-- Light Thumb with equal inset (padding on all sides) -->
+                  <div *ngIf="cards.length > 1" [style.height]="(100 / cards.length) + '%'"
+                    [style.top]="(currentSlide * (100 / cards.length)) + '%'"
+                    class="absolute inset-[2px] bg-[#F9DAD5] rounded-full transition-all duration-300">
+                  </div>
+                </div>
+              </div>
+
+
+
+              <!-- Text Section -->
+              <div class="w-full lg:w-2/3 pl-8 sm:pl-12 transition-all duration-700 ease-in-out" [ngStyle]="{
+       transform: currentSlide === i ? 'translateY(0)' : (i < currentSlide ? 'translateY(-80px)' : 'translateY(80px)'),
+       opacity: currentSlide === i ? '1' : '0.5'
+     }">
+                <h3 class="text-orange-500 text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 text-left">
+                  {{card.title}}
+                </h3>
+                <p class="text-gray-700 text-base sm:text-lg leading-relaxed text-left">
+                  {{card.description}}
+                </p>
+              </div>
+
+
+
+              <!-- Image Section -->
+              <div
+                class="w-full lg:w-1/3 flex items-center justify-center lg:justify-end transition-all duration-700 ease-in-out"
+                [ngStyle]="{
+                     transform: currentSlide === i ? 'translateY(0)' : (i < currentSlide ? 'translateY(80px)' : 'translateY(-80px)'),
+                     opacity: currentSlide === i ? '1' : '0.5'
+                   }">
+                <img [src]="card.image"
+                  class="w-[200px] sm:w-[240px] h-[200px] sm:h-[240px] rounded-xl object-cover border border-gray-200 shadow-md"
+                  [alt]="card.title" />
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
